@@ -1,0 +1,48 @@
+// Insert an element at beginning of Linked list
+#include<stdio.h>
+#include<malloc.h>
+#include<conio.h>
+struct node
+{
+ int data;
+ struct node*next;
+};struct node *s;
+
+void insert_beg(struct node**S)
+{
+ struct node*p;
+ p=(struct node*)malloc(sizeof(struct node));
+ printf("Enter new node data at begining \n");
+ scanf("%d",&p->data);
+ p->next=s;
+ s=p;
+}
+
+void main()
+{
+ struct node *p,*q;
+ char ch;
+ p=(struct node*)malloc(sizeof(struct node));
+ printf("Enter the value of first node \n");
+ scanf("%d",&p->data);
+ s=p;
+ do
+ {
+  q=(struct node*)malloc(sizeof(struct node));
+  printf("Enter value of second node \n");
+  scanf("%d",&q->data);
+  p->next=q;
+  p=q;
+  printf("Press Y to a add new node \n");
+  ch=getch();
+ } while (ch=='y');
+  p->next=NULL;
+  insert_beg(&s);
+  printf("List of data is\n");
+  while(s!=NULL)
+ {
+  printf("%d\n",s->data);
+  s=s->next;
+ }
+getch();
+}
